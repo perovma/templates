@@ -15,14 +15,22 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("Docker build image") {
+        stage("Docker check DB and WEB containers are running") {
             steps {
-                dir ('mysql_training') {
                     sh 'docker stop sqlimage_phpmyadmin_1 mysql8 2>/dev/null'
                     sh 'docker rm sqlimage_phpmyadmin_1 mysql8 2>/dev/null'
+            }
+        }
+        stage("Docker up containers with new params") {
+            steps {
+                dir ('mysql_training') {
                     sh 'docker-compose up -d'
-                    sh 'docker ps'
                 }
+            }
+        }
+        stage("Docker show list of containers are running") {
+            steps {
+                    sh 'docker ps'
             }
         }
     }
