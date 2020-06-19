@@ -16,8 +16,9 @@ pipeline {
         stage("Docker build image") {
             steps {
                 dir ('mysql_training') {
-                    sh 'docker-compouse down'
+                    sh 'docker stop sqlimage_phpmyadmin_1 mysql8'
                     sh 'docker-compouse up -d'
+                    sh 'docker ps'
                 }
             }
         }
