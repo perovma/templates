@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   phpmyadmin:
+    container_name: sqlimage_phpmyadmin_1
     image: phpmyadmin/phpmyadmin
     depends_on:
      - db
