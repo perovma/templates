@@ -1,13 +1,12 @@
-
 #!groovy
-// Automated rebuild docker image
+#Automated rebuild docker image
 properties([disableConcurrentBuilds()])
 
 pipeline {
     agent { 
         label 'master'
     }
-    triggers { pollSCM('* * * * *') } // check git repository every min
+    triggers { pollSCM('* * * * *') } # check git repository every min
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
