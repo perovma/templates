@@ -19,6 +19,7 @@ pipeline {
             steps {
                 dir ('mysql_training') {
                     sh 'docker stop sqlimage_phpmyadmin_1 mysql8'
+                    sh 'docker rm sqlimage_phpmyadmin_1 mysql8'
                     sh 'docker-compose up -d'
                     sh 'docker ps'
                 }
