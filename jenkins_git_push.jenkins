@@ -6,6 +6,9 @@ pipeline {
     agent { 
         label 'master'
     }
+    environment {
+        PATH = "$PATH:/usr/local/bin"
+    }
     triggers { pollSCM('* * * * *') } // check git repository every min
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
